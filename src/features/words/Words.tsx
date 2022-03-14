@@ -9,8 +9,6 @@ const Words = () => {
     game;
   const { list } = words;
 
-
-
   return (
     <>
       {gameStatus === "playing" &&
@@ -21,14 +19,16 @@ const Words = () => {
       {gameStatus === "answers" && scenario !== undefined && (
         <>
           {list[scenario].all_words
-              .filter((el) => !selectedWords.includes(el))
-              .map((el) => <Word key={el} styleW="word" text={el} />)}
+            .filter((el) => !selectedWords.includes(el))
+            .map((el) => (
+              <Word key={el} styleW="word" text={el} />
+            ))}
           {correctAnswers.map((el) => (
-              <Word key={el} styleW="word word-correct" text={el} />
-            ))}
+            <Word key={el} styleW="word word-correct" text={el} />
+          ))}
           {wrongAnswers.map((el) => (
-              <Word key={el} styleW="word word-wrong" text={el} />
-            ))}
+            <Word key={el} styleW="word word-wrong" text={el} />
+          ))}
         </>
       )}
     </>

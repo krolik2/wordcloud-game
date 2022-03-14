@@ -11,7 +11,7 @@ interface WordsProps {
 const Word = ({ text, styleW }: WordsProps) => {
   const [isSelected, setSelected] = useState(false);
   const game = useSelector((state: RootState) => state.game);
-  const { gameStatus, } = game;
+  const { gameStatus } = game;
 
   const dispatch = useDispatch();
 
@@ -26,14 +26,20 @@ const Word = ({ text, styleW }: WordsProps) => {
   return (
     <>
       {gameStatus === "playing" && (
-        <div
-          className={!isSelected ? "word" : "word word-selected"}
-          onClick={toggleSelected}
-        >
-          {text}
+        <div className="square">
+          <div
+            className={!isSelected ? "word" : "word word-selected"}
+            onClick={toggleSelected}
+          >
+            {text}
+          </div>
         </div>
       )}
-      {gameStatus === "answers" && <div className={styleW}>{text}</div>}
+      {gameStatus === "answers" && (
+        <div className="square">
+          <div className={styleW}>{text}</div>
+        </div>
+      )}
     </>
   );
 };

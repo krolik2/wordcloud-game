@@ -15,7 +15,7 @@
 }
 
 .score {
-  color: #00BFFF;
+  color: #00bfff;
 }
 
 .board {
@@ -25,6 +25,9 @@
   place-items: center;
   border-radius: 5px;
   border: solid 1px black;
+  grid-template-columns: repeat(4, minmax(auto, 1fr));
+  grid-template-rows: repeat(4, 1fr);
+  gap: 15px;
 }
 
 .container {
@@ -36,9 +39,9 @@
 }
 
 .button {
-  border: 1px solid #00BFFF;
+  border: 1px solid #00bfff;
   border-radius: 5px;
-  color: #00BFFF;
+  color: #00bfff;
   padding: 10px 30px;
   background-color: #fff;
   font-size: 1.5rem;
@@ -48,8 +51,8 @@
 }
 
 .input-wrapper {
- width: 100%;
- margin-bottom: 1rem;
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
 .input {
@@ -60,21 +63,49 @@
 }
 
 .word {
+  display: inline-block;
   font-family: "Fredoka", sans-serif;
   font-weight: 600;
   font-size: 1.4rem;
   user-select: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   cursor: pointer;
+}
+
+.square {
+  height: 60px;
+  position: relative;
 }
 
 .word-selected {
   color: rgb(190, 186, 186);
 }
 
-.word-correct{
+.word-correct {
   color: rgb(46, 214, 82);
 }
 
-.word-wrong{
+.word-correct::after {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(46, 214, 82, 0.541);
+  content: "Good";
+}
+
+.word-wrong {
   color: red;
+}
+
+.word-wrong::after {
+  position: absolute;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgba(255, 0, 0, 0.486);
+  content: "Bad";
 }
